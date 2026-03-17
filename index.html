@@ -2,54 +2,132 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Mun Maalausyritys</title>
+    <title>VH‑Custom maalauspalvelut</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
-        h1 {
-            color: #2c3e50;
+        header {
+            background: #333;
+            color: white;
+            padding: 40px 20px;
             text-align: center;
         }
-        p, ul {
-            font-size: 18px;
-            line-height: 1.6;
+        header h1 {
+            margin: 0;
+            font-size: 2.4em;
         }
-        img {
-            display: block;
-            margin: 20px auto;
+        nav {
+            background: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .hero img {
             max-width: 100%;
             height: auto;
-            border: 2px solid #ccc;
-            border-radius: 5px;
         }
-        a.nappi {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3498db;
+        .section {
+            margin: 40px 20px;
+        }
+        .section h2 {
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service {
+            width: 30%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .service img {
+            width: 100%;
+            border-radius: 6px;
+        }
+        .contact {
+            background: #f2f2f2;
+            padding: 20px;
+            text-align: center;
+        }
+        .contact a {
+            background: #2c3e50;
             color: white;
+            padding: 12px 25px;
             text-decoration: none;
-            border-radius: 5px;
-        }
-        a.nappi:hover {
-            background-color: #2980b9;
+            border-radius: 4px;
+            font-size: 18px;
         }
     </style>
 </head>
 <body>
-    <h1>Tervetuloa mun maalausyrityksen sivulle!</h1>
-    <p>Tässä näkyy yksi esimerkki ruiskumaalauksesta:</p>
 
-    <!-- Kuva -->
-    <img src="ruiskumaalaus.jpg" alt="Ruiskumaalaus työssä">
+<header>
+    <h1>VH‑Custom Maalauspalvelut</h1>
+    <p>Laadukasta ruiskumaalausta ja pintakäsittelyä</p>
+</header>
 
-    <p>Ota yhteyttä ja kysy lisää palveluistamme!</p>
+<nav>
+    <a href="#services">Palvelut</a>
+    <a href="#projects">Referenssit</a>
+    <a href="#contact">Yhteystiedot</a>
+</nav>
 
-    <!-- Linkki hinnastoon -->
-    <p><a href="hinnasto.html" class="nappi">Katso hinnasto</a></p>
+<div class="hero">
+    <img src="ruiskumaalaus.jpg" alt="Esimerkkikuva ruiskumaalauksesta">
+</div>
+
+<div id="services" class="section">
+    <h2>Palvelumme</h2>
+    <div class="services">
+        <div class="service">
+            <img src="ruiskumaalaus.jpg" alt="Ruiskumaalaus">
+            <p>Ruiskumaalaus: Sisä‑ ja ulkopinnat</p>
+        </div>
+        <div class="service">
+            <img src="ruiskumaalaus.jpg" alt="Maalaus">
+            <p>Perinteinen maalaus ja viimeistely</p>
+        </div>
+        <div class="service">
+            <img src="ruiskumaalaus.jpg" alt="Pintakäsittely">
+            <p>Pintakäsittely ja suojaukset</p>
+        </div>
+    </div>
+</div>
+
+<div id="projects" class="section">
+    <h2>Referenssit</h2>
+    <p>Olemme toteuttaneet maalauksia monipuolisesti eri kohteissa – tyytyväiset asiakkaat ovat meille tärkein mittari.</p>
+    <ul>
+        <li>Asuntojen ja toimistojen maalaus</li>
+        <li>Auton maalaukset ja ulkomaalaukset</li>
+        <li>Teollisen tason ruiskumaalaukset</li>
+    </ul>
+    <p>Katso lisää referenssejä tulevaisuudessa tänne!</p>
+</div>
+
+<div id="contact" class="section contact">
+    <h2>Ota yhteyttä</h2>
+    <p>Soita tai lähetä viesti, niin sovitaan maalausprojekti!</p>
+    <p><a href="mailto:info@vh-custom.fi">info@vh-custom.fi</a></p>
+</div>
+
 </body>
 </html>
