@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hinnasto</title>
+<title>Moderni Hinnasto</title>
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #111; /* tumma tausta, ei musta kokonaan */
+    background-color: #111;
     color: #fff;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
   }
 
   header {
@@ -46,15 +47,42 @@
     background-color: #ff3333;
   }
 
-  .hinnasto {
+  /* Hinnasto-overlay */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hinnasto-container {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     max-width: 600px;
-    margin: 0 auto;
     background-color: #1a1a1a;
     border: 2px solid #e60000;
     border-radius: 10px;
     overflow: hidden;
-    display: none; /* aluksi piilotettu */
-    animation: fadeIn 0.5s forwards;
+    z-index: 20;
+    transition: top 0.5s ease;
+  }
+
+  .hinnasto-container.active {
+    top: 50px; /* alas liukuu näkyviin */
   }
 
   .hinnasto table {
@@ -73,11 +101,6 @@
     color: #fff;
   }
 
-  @keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
-  }
-
 </style>
 </head>
 <body>
@@ -90,44 +113,52 @@
   <button id="toggleHinnasto">Näytä Hinnasto</button>
 </nav>
 
-<div class="hinnasto" id="hinnasto">
-  <table>
-    <thead>
-      <tr>
-        <th>Palvelu</th>
-        <th>Hinta</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Palvelu 1</td>
-        <td>50€</td>
-      </tr>
-      <tr>
-        <td>Palvelu 2</td>
-        <td>80€</td>
-      </tr>
-      <tr>
-        <td>Palvelu 3</td>
-        <td>120€</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="overlay" id="overlay"></div>
+
+<div class="hinnasto-container" id="hinnasto">
+  <div class="hinnasto">
+    <table>
+      <thead>
+        <tr>
+          <th>Palvelu</th>
+          <th>Hinta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Palvelu 1</td>
+          <td>50€</td>
+        </tr>
+        <tr>
+          <td>Palvelu 2</td>
+          <td>80€</td>
+        </tr>
+        <tr>
+          <td>Palvelu 3</td>
+          <td>120€</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 <script>
   const button = document.getElementById('toggleHinnasto');
   const hinnasto = document.getElementById('hinnasto');
+  const overlay = document.getElementById('overlay');
 
-  button.addEventListener('click', () => {
-    if(hinnasto.style.display === 'none' || hinnasto.style.display === ''){
-      hinnasto.style.display = 'block';
+  function toggleHinnasto() {
+    hinnasto.classList.toggle('active');
+    overlay.classList.toggle('active');
+    if(hinnasto.classList.contains('active')){
       button.textContent = 'Piilota Hinnasto';
     } else {
-      hinnasto.style.display = 'none';
       button.textContent = 'Näytä Hinnasto';
     }
-  });
+  }
+
+  button.addEventListener('click', toggleHinnasto);
+  overlay.addEventListener('click', toggleHinnasto); // sulje klikkaamalla taustaa
 </script>
 
 </body>
