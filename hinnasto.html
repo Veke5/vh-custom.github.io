@@ -1,7 +1,13 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hinnasto</title>
 <style>
   body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #111;
+    background-color: #111; /* tumma tausta, ei musta kokonaan */
     color: #fff;
     margin: 0;
     padding: 0;
@@ -47,7 +53,7 @@
     border: 2px solid #e60000;
     border-radius: 10px;
     overflow: hidden;
-    display: none; /* piilotettu aluksi */
+    display: none; /* aluksi piilotettu */
     animation: fadeIn 0.5s forwards;
   }
 
@@ -71,4 +77,58 @@
     from {opacity: 0;}
     to {opacity: 1;}
   }
+
 </style>
+</head>
+<body>
+
+<header>
+  <h1>Yrityksesi Nimi</h1>
+</header>
+
+<nav>
+  <button id="toggleHinnasto">Näytä Hinnasto</button>
+</nav>
+
+<div class="hinnasto" id="hinnasto">
+  <table>
+    <thead>
+      <tr>
+        <th>Palvelu</th>
+        <th>Hinta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Palvelu 1</td>
+        <td>50€</td>
+      </tr>
+      <tr>
+        <td>Palvelu 2</td>
+        <td>80€</td>
+      </tr>
+      <tr>
+        <td>Palvelu 3</td>
+        <td>120€</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  const button = document.getElementById('toggleHinnasto');
+  const hinnasto = document.getElementById('hinnasto');
+
+  button.addEventListener('click', () => {
+    if(hinnasto.style.display === 'none' || hinnasto.style.display === ''){
+      hinnasto.style.display = 'block';
+      button.textContent = 'Piilota Hinnasto';
+    } else {
+      hinnasto.style.display = 'none';
+      button.textContent = 'Näytä Hinnasto';
+    }
+  });
+</script>
+
+</body>
+</html>
