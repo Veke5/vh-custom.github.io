@@ -1,44 +1,74 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Hinnasto</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-        }
-        ul {
-            font-size: 18px;
-            line-height: 1.6;
-        }
-        a.nappi {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a.nappi:hover {
-            background-color: #2980b9;
-        }
-    </style>
-</head>
-<body>
-    <h1>Hinnasto</h1>
-    <ul>
-        <li>Pienet työt: 50€</li>
-        <li>Isommat työt: 100€</li>
-        <li>Ruiskumaalaus: 150€</li>
-    </ul>
-    <p><a href="index.html" class="nappi">← Takaisin etusivulle</a></p>
-</body>
-</html>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #000;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  header h1 {
+    color: #e60000;
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+  }
+
+  nav button {
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+
+  nav button:hover {
+    background-color: #ff3333;
+  }
+
+  .hinnasto {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #1a1a1a;
+    border: 2px solid #e60000;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none; /* piilotettu aluksi */
+    animation: fadeIn 0.5s forwards;
+  }
+
+  .hinnasto table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hinnasto th, .hinnasto td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e60000;
+  }
+
+  .hinnasto th {
+    background-color: #e60000;
+    color: #fff;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+</style>
