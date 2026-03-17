@@ -3,23 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Mun Maalausyritys</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        p, ul {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        img {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+        }
+        a.nappi {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a.nappi:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Tervetuloa mun maalausyrityksen sivulle!</h1>
-    </header>
+    <h1>Tervetuloa mun maalausyrityksen sivulle!</h1>
+    <p>Tässä näkyy yksi esimerkki ruiskumaalauksesta:</p>
 
-    <main>
-        <p>Tässä näkyy yksi esimerkki ruiskumaalauksesta:</p>
+    <!-- Kuva -->
+    <img src="ruiskumaalaus.jpg" alt="Ruiskumaalaus työssä">
 
-        <!-- Kuva -->
-        <img src="ruiskumaalaus.jpg" alt="Ruiskumaalaus työssä" class="kuva">
+    <p>Ota yhteyttä ja kysy lisää palveluistamme!</p>
 
-        <p>Ota yhteyttä ja kysy lisää palveluistamme!</p>
-
-        <!-- Linkki hinnastoon -->
-        <p><a href="hinnasto.html" class="nappi">Katso hinnasto</a></p>
-    </main>
+    <!-- Linkki hinnastoon -->
+    <p><a href="hinnasto.html" class="nappi">Katso hinnasto</a></p>
 </body>
 </html>
