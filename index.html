@@ -1,174 +1,179 @@
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-    <meta charset="UTF-8">
-    <title>VH-Custom Maalauspalvelut</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #1c1c1c;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-        }
-        a { text-decoration: none; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yrityksen sivu</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #111;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
 
-        /* Header / Hero */
-        header {
-            position: relative;
-            text-align: center;
-            color: #fff;
-            background-color: #000;
-            padding: 80px 20px;
-        }
-        header h1 {
-            font-size: 3em;
-            margin: 0 0 15px 0;
-            color: #e74c3c;
-        }
-        header p {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-        header a.hero-btn {
-            display: inline-block;
-            margin-top: 15px;
-            background-color: #e74c3c;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-        header a.hero-btn:hover { background-color: #c0392b; }
+  header {
+    background-color: #000;
+    padding: 1rem;
+    text-align: center;
+  }
 
-        /* Navigation */
-        nav {
-            background-color: #000;
-            padding: 12px;
-            text-align: center;
-        }
-        nav a {
-            color: #e74c3c;
-            margin: 0 15px;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: #fff; }
+  header h1 {
+    color: #e60000;
+    margin: 0;
+    font-size: 2rem;
+  }
 
-        /* Main layout: sisältö vasemmassa laidassa */
-        .main-container {
-            display: flex;
-            flex-direction: row;
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        .sidebar {
-            flex: 0 0 250px; /* leveys 250px */
-            margin-right: 40px;
-            position: sticky;
-            top: 20px;
-        }
-        .sidebar h2 {
-            color: #e74c3c;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar li {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
 
-        .content {
-            flex: 1;
-        }
-        .content h2 {
-            color: #e74c3c;
-            border-bottom: 2px solid #e74c3c;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        .content ul {
-            list-style: none;
-            padding: 0;
-        }
-        .content li {
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
+  main p {
+    line-height: 1.6;
+  }
 
-        .contact {
-            background-color: #111;
-            padding: 20px;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .contact a {
-            background-color: #e74c3c;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            display: inline-block;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-        .contact a:hover { background-color: #c0392b; }
+  .show-button {
+    display: inline-block;
+    margin: 1rem 0;
+    background-color: #e60000;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
 
-        @media(max-width:900px) {
-            .main-container { flex-direction: column; }
-            .sidebar { margin-right: 0; margin-bottom: 40px; }
-        }
-    </style>
+  .show-button:hover {
+    background-color: #ff3333;
+  }
+
+  /* Overlay ja hinnasto */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+    z-index: 10;
+  }
+
+  .overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hinnasto-container {
+    position: fixed;
+    top: -100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    background-color: #1a1a1a;
+    border: 2px solid #e60000;
+    border-radius: 10px;
+    overflow: hidden;
+    z-index: 20;
+    transition: top 0.5s ease;
+  }
+
+  .hinnasto-container.active {
+    top: 50px;
+  }
+
+  .hinnasto table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .hinnasto th, .hinnasto td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e60000;
+  }
+
+  .hinnasto th {
+    background-color: #e60000;
+    color: #fff;
+  }
+
+</style>
 </head>
 <body>
 
 <header>
-    <h1>VH-Custom Maalauspalvelut</h1>
-    <p>Ruiskumaalaukset, soda-puhallukset ja muut maalauspalvelut</p>
-    <p>Tarjouspyynnöt: <a href="mailto:vh-custom@gmail.com" style="color:#fff; text-decoration: underline;">vh-custom@gmail.com</a></p>
-    <a href="hinnasto.html" class="hero-btn">Katso hinnasto</a>
+  <h1>Yrityksesi Nimi</h1>
 </header>
 
-<nav>
-    <a href="#services">Palvelut</a>
-    <a href="#projects">Referenssit</a>
-    <a href="#contact">Yhteystiedot</a>
-</nav>
+<main>
+  <p>Tervetuloa sivuillemme! Tässä kerromme palveluistamme ja hinnoista. Palvelumme ovat laadukkaita ja kilpailukykyisiä.</p>
 
-<div class="main-container">
-    <!-- Vasemman laidan sivupalkki -->
-    <div class="sidebar">
-        <h2>Palvelumme</h2>
-        <ul>
-            <li>Ruiskumaalaukset</li>
-            <li>Soda-puhallukset</li>
-            <li>Muut palvelut</li>
-        </ul>
-    </div>
+  <p>Voit tarkastella hinnastoa napin kautta alla.</p>
 
-    <!-- Pääsisältö -->
-    <div class="content">
-        <h2>Referenssit</h2>
-        <ul>
-            <li>Ruiskumaalaushommat</li>
-            <li>Pohjatyöt</li>
-            <li>Asennukset</li>
-        </ul>
-    </div>
+  <!-- Näytä hinnasto nappi -->
+  <button class="show-button" id="toggleHinnasto">Näytä Hinnasto</button>
+
+  <p>Lisätietoja palveluista voit kysyä suoraan yhteystietolomakkeemme kautta tai soittamalla numeroon.</p>
+</main>
+
+<!-- Overlay ja hinnasto samaan sivuun -->
+<div class="overlay" id="overlay"></div>
+
+<div class="hinnasto-container" id="hinnasto">
+  <div class="hinnasto">
+    <table>
+      <thead>
+        <tr>
+          <th>Palvelu</th>
+          <th>Hinta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Palvelu 1</td>
+          <td>50€</td>
+        </tr>
+        <tr>
+          <td>Palvelu 2</td>
+          <td>80€</td>
+        </tr>
+        <tr>
+          <td>Palvelu 3</td>
+          <td>120€</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
-<div id="contact" class="contact">
-    <h2>Ota yhteyttä</h2>
-    <p>Soita tai lähetä viesti, niin sovitaan maalausprojekti!</p>
-    <p>Sähköposti: <a href="mailto:vh-custom@gmail.com">vh-custom@gmail.com</a></p>
-</div>
+<script>
+  const button = document.getElementById('toggleHinnasto');
+  const hinnasto = document.getElementById('hinnasto');
+  const overlay = document.getElementById('overlay');
+
+  function toggleHinnasto() {
+    hinnasto.classList.toggle('active');
+    overlay.classList.toggle('active');
+    if(hinnasto.classList.contains('active')){
+      button.textContent = 'Piilota Hinnasto';
+    } else {
+      button.textContent = 'Näytä Hinnasto';
+    }
+  }
+
+  button.addEventListener('click', toggleHinnasto);
+  overlay.addEventListener('click', toggleHinnasto); // sulkee klikattaessa taustaa
+</script>
 
 </body>
 </html>
